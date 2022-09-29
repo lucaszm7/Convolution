@@ -7,7 +7,7 @@ x = x(:,2);
 nh = h(:,1);
 h = h(:,2);
 
-y = convolution(x, nx, h, nh);
+[ny, y] = convolution(x, nx, h, nh);
 
-figure; stem(y);
+figure; stem(ny, y);
 

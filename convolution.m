@@ -1,17 +1,19 @@
-function y = convolution(x, nx, h, nh)
+function [ny, y] = convolution(x, nx, h, nh)
 
   nh = nh * -1;
   nh = nh(length(nh):-1:1);
   
-  # diff = nh(length(nh)) - nx(1);
-  # nh = nh - diff;
+  diff = nh(length(nh)) - nx(1);
+  nh = nh - diff;
+  
+  ny = [];
   
   h = h(length(h):-1:1);
   # figure; stem(nh, h);
   
 
   for i = 1 : length(nh) + length(nx) - 1
-    
+    ny(i) = i;
     
     interX = [];
     interH = [];
@@ -38,6 +40,7 @@ function y = convolution(x, nx, h, nh)
     
   endfor
   
-  # y += diff;
+  ny -= diff;
+  stem(ny, y);
   
 end
