@@ -9,12 +9,11 @@ function [ny, y] = convolution(x, nx, h, nh)
   ny = [];
   
   h = h(length(h):-1:1);
-  # figure; stem(nh, h);
-  
 
   for i = 1 : length(nh) + length(nx) - 1
     ny(i) = i;
     
+    # calcula intersecção x() e h()
     interX = [];
     interH = [];
     
@@ -27,9 +26,6 @@ function [ny, y] = convolution(x, nx, h, nh)
       endfor
     endfor
     
-    interX
-    interH
-    
     yl = 0;
     for j = 1 : length(interH)
       yl += h(interH(j)) * x(interX(j));
@@ -41,6 +37,5 @@ function [ny, y] = convolution(x, nx, h, nh)
   endfor
   
   ny -= diff;
-  stem(ny, y);
   
 end
